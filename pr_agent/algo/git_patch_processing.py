@@ -107,8 +107,8 @@ def omit_deletion_hunks(patch_lines) -> str:
             edit_type = line[0]
             if edit_type == '+':
                 add_hunk = True
-    if inside_hunk and add_hunk:
-        added_patched.extend(temp_hunk)
+    #if inside_hunk and add_hunk: -> (BUG: this statement is deleted so the function does not append the last hunk)
+    #    added_patched.extend(temp_hunk)
 
     return '\n'.join(added_patched)
 
