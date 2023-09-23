@@ -51,9 +51,9 @@ def extend_patch(original_file_str, patch_str, num_lines) -> str:
                         start2 = 0
                     section_header = res[4]
                     extended_start1 = max(1, start1 - num_lines)
-                    extended_size1 = size1 + (start1 - extended_start1) + num_lines
+                    extended_size1 = size1 + num_lines # Only counting one side of the hunk
                     extended_start2 = max(1, start2 - num_lines)
-                    extended_size2 = size2 + (start2 - extended_start2) + num_lines
+                    extended_size2 = size2 + num_lines # Only counting one side of the hunk
                     extended_patch_lines.append(
                         f'@@ -{extended_start1},{extended_size1} '
                         f'+{extended_start2},{extended_size2} @@ {section_header}')
