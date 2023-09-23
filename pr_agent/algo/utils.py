@@ -148,7 +148,7 @@ def try_fix_json(review, max_iter=10, code_suggestions=False):
         while last_code_suggestion_ind > 0 and not valid_json and iter_count < max_iter:
             try:
                 data = json.loads(review[:last_code_suggestion_ind] + closing_bracket)
-                valid_json = True
+                # valid_json = True (BUG: this will not be present in the candidate tests )
                 review = review[:last_code_suggestion_ind].strip() + closing_bracket
             except json.decoder.JSONDecodeError:
                 review = review[:last_code_suggestion_ind]
